@@ -1,5 +1,5 @@
 // Comic: The Archive of Forgotten Things
-// Page 1 to 5 – Navigation included
+// Page 1 to 6 – Navigation included
 
 import { useState } from 'react';
 import './App.css';
@@ -17,7 +17,8 @@ export default function App() {
             page === 2 ? 'The Forgotten Birthday Wish' :
             page === 3 ? 'The Lost Letter' :
             page === 4 ? 'The Clock That Skipped a Beat' :
-            'The Unsent Applause'
+            page === 5 ? 'The Unsent Applause' :
+            'The Memory That Wasn’t Theirs'
           }
         </h2>
 
@@ -81,11 +82,23 @@ export default function App() {
           </>
         )}
 
+        {page === 6 && (
+          <>
+            <img src="/images/page6.jpg" alt="Comic Panel - The Memory That Wasn’t Theirs" className="rounded-2xl shadow-lg border border-gray-700 mx-auto" style={{ maxWidth: '600px', width: '100%', height: 'auto' }} />
+            <div className="space-y-6 text-lg leading-relaxed">
+              <p><em>Some memories don't belong to us—</em><br />but we carry them anyway.<br />A swing in motion. A scent. A glance.<br />Familiar. But not ours.</p>
+              <p><em>This one floated in.</em><br />Unclaimed. Untethered.<br />A whisper in someone else’s voice.</p>
+              <p><em>I filed it under Drawer 87.</em><br />With care. And without question.</p>
+              <p><strong>Some memories find new homes.</strong></p>
+            </div>
+          </>
+        )}
+
         <div className="flex justify-between pt-8">
           <button onClick={() => setPage(page - 1)} disabled={page === 1} className="px-4 py-2 rounded bg-gray-700 disabled:opacity-50">
             ← Back
           </button>
-          <button onClick={() => setPage(page + 1)} disabled={page === 5} className="px-4 py-2 rounded bg-gray-700 disabled:opacity-50">
+          <button onClick={() => setPage(page + 1)} disabled={page === 6} className="px-4 py-2 rounded bg-gray-700 disabled:opacity-50">
             Next →
           </button>
         </div>
