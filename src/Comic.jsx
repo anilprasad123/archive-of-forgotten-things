@@ -1,5 +1,5 @@
 // Comic: The Archive of Forgotten Things
-// Page 1 to 6 – Responsive layout + improved font sizes
+// Page 1 to 6 – Responsive layout (fixed) + larger mobile font
 
 import { useState } from 'react';
 import './App.css';
@@ -73,19 +73,21 @@ export default function App() {
   const current = episodes[page - 1];
 
   return (
-    <div className="bg-gradient-to-b from-gray-900 to-gray-800 min-h-screen text-white p-4 md:p-8 font-serif">
-      <div className="max-w-5xl mx-auto space-y-10">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-wide text-center">The Archive of Forgotten Things</h1>
-        <h2 className="text-lg md:text-xl italic text-gray-400 text-center">Episode {page}: {current.title}</h2>
+    <div className="bg-gradient-to-b from-gray-900 to-gray-800 min-h-screen text-white px-4 py-8 font-serif">
+      <div className="max-w-6xl mx-auto space-y-10">
+        <h1 className="text-3xl md:text-5xl font-bold tracking-wide text-center">The Archive of Forgotten Things</h1>
+        <h2 className="text-lg md:text-2xl italic text-gray-400 text-center">Episode {page}: {current.title}</h2>
 
-        <div className="flex flex-col md:flex-row md:space-x-8 items-center justify-center">
-          <img
-            src={`/images/${current.img}`}
-            alt={`Comic Panel - ${current.title}`}
-            className="rounded-2xl shadow-lg border border-gray-700 max-w-md w-full mb-6 md:mb-0"
-          />
+        <div className="flex flex-col md:flex-row md:space-x-8 items-start justify-center md:items-start">
+          <div className="w-full md:w-1/2">
+            <img
+              src={`/images/${current.img}`}
+              alt={`Comic Panel - ${current.title}`}
+              className="rounded-2xl shadow-lg border border-gray-700 w-full mb-6 md:mb-0"
+            />
+          </div>
 
-          <div className="space-y-6 text-base md:text-lg leading-relaxed max-w-xl">
+          <div className="w-full md:w-1/2 space-y-6 text-[1.1rem] md:text-lg leading-relaxed">
             {current.text.map((line, idx) => (
               <p key={idx}><em>{line}</em></p>
             ))}
