@@ -1,4 +1,5 @@
-// Comic.jsx
+// Comic.jsx – original layout restored, font size increased
+
 import { useState } from 'react';
 import './App.css';
 
@@ -72,21 +73,18 @@ export default function Comic() {
 
   return (
     <div className="bg-gradient-to-b from-gray-900 to-gray-800 min-h-screen text-white px-4 py-10 font-serif">
-      <div className="max-w-6xl mx-auto space-y-10">
+      <div className="max-w-4xl mx-auto space-y-10">
         <h1 className="text-3xl md:text-5xl font-bold tracking-wide text-center">The Archive of Forgotten Things</h1>
         <h2 className="text-lg md:text-2xl italic text-gray-400 text-center">Episode {page}: {current.title}</h2>
 
-        {/* FIXED IMAGE + TEXT SECTION */}
-        <div className="flex flex-col md:flex-row items-start justify-center max-w-5xl mx-auto mt-10 gap-8">
-          <div className="w-full md:w-[400px] flex-shrink-0">
-            <img
-              src={`/images/${current.img}`}
-              alt={`Comic Panel - ${current.title}`}
-              className="w-full rounded-xl border border-gray-700"
-            />
-          </div>
+        <div className="flex flex-col items-center justify-center space-y-8">
+          <img
+            src={`/images/${current.img}`}
+            alt={`Comic Panel - ${current.title}`}
+            className="rounded-2xl shadow-lg border border-gray-700 w-full max-w-[600px]"
+          />
 
-          <div className="w-full md:flex-1 text-[1.15rem] md:text-lg leading-relaxed space-y-6 text-center md:text-left px-2">
+          <div className="space-y-6 text-[1.15rem] md:text-lg leading-relaxed text-center">
             {current.text.map((line, idx) => (
               <p key={idx}><em>{line}</em></p>
             ))}
@@ -113,3 +111,4 @@ export default function Comic() {
     </div>
   );
 }
+
