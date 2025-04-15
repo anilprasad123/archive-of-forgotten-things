@@ -84,7 +84,7 @@ export default function Comic() {
             className="rounded-2xl shadow-lg border border-gray-700 w-full max-w-[600px]"
           />
 
-          <div className="space-y-6 text-[1.15rem] md:text-lg leading-relaxed text-center">
+          <div className="space-y-6 text-[1.2rem] md:text-xl leading-relaxed text-center">
             {current.text.map((line, idx) => (
               <p key={idx}><em>{line}</em></p>
             ))}
