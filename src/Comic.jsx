@@ -1,5 +1,5 @@
 // Comic: The Archive of Forgotten Things
-// Page 1 to 6 – Navigation included
+// Page 1 to 6 – Responsive layout + improved font sizes
 
 import { useState } from 'react';
 import './App.css';
@@ -7,98 +7,104 @@ import './App.css';
 export default function App() {
   const [page, setPage] = useState(1);
 
+  const episodes = [
+    {
+      title: 'The Misplaced Idea',
+      img: 'page1.jpg',
+      text: [
+        'It was born during a daydream, stuffed inside a crayon. A whisper that never got written, a wonder no one chased.',
+        'So it wandered here—into drawer 19, beneath unpaid bills, between a broken metaphor and an apology never said.',
+        'I found it flickering. Still warm.',
+        'Lucky thing.'
+      ]
+    },
+    {
+      title: 'The Forgotten Birthday Wish',
+      img: 'page2.jpg',
+      text: [
+        'It rose on the breath of a candle, fragile, glowing, full of hope. A single wish—made in silence, never spoken, never heard.',
+        'The party ended. The lights dimmed. No one asked what it was. So it floated here, into my archive, heart-shaped and humming faintly.',
+        'I keep it company now. It flickers when I pass.',
+        'Still waiting to be wished for.'
+      ]
+    },
+    {
+      title: 'The Lost Letter',
+      img: 'page3.jpg',
+      text: [
+        'It was meant to be sent, but never was. Maybe the words felt too fragile. Maybe the sender ran out of courage… or time.',
+        'So it waited. In Drawer 42. Next to a postcard from nowhere and a blank return envelope.',
+        'I never opened it. I just watched as it leaked everything it never said.',
+        'Some letters write themselves, even when no one reads them.'
+      ]
+    },
+    {
+      title: 'The Clock That Skipped a Beat',
+      img: 'page4.jpg',
+      text: [
+        'This one… paused. Not broken. Just… still. One moment too heavy to move past. One heartbeat that didn’t know what to do next.',
+        'It wasn’t grief. It wasn’t joy. It was something else—a flicker between the two.',
+        'So the second hand froze. And the moment stayed here. In drawer zero. Where time comes to hesitate.',
+        'Even clocks sometimes need a breath.'
+      ]
+    },
+    {
+      title: 'The Unsent Applause',
+      img: 'page5.jpg',
+      text: [
+        'The lights were ready. The confetti waited. But no one came. No one clapped. No one knew.',
+        'It wasn’t a failure. It was a performance held inside a whisper, for an audience that never arrived.',
+        'So I kept the ticket. And I filed the moment.',
+        'Some ovations echo in silence.'
+      ]
+    },
+    {
+      title: 'The Memory That Wasn’t Theirs',
+      img: 'page6.jpg',
+      text: [
+        'Some memories don’t belong to us—but we carry them anyway. A swing in motion. A scent. A glance. Familiar. But not ours.',
+        'This one floated in. Unclaimed. Untethered. A whisper in someone else’s voice.',
+        'I filed it under Drawer 87. With care. And without question.',
+        'Some memories find new homes.'
+      ]
+    }
+  ];
+
+  const current = episodes[page - 1];
+
   return (
-    <div className="bg-gradient-to-b from-gray-900 to-gray-800 min-h-screen text-white p-8 font-serif">
-      <div className="max-w-3xl mx-auto space-y-10">
-        <h1 className="text-4xl font-bold tracking-wide">The Archive of Forgotten Things</h1>
-        <h2 className="text-xl italic text-gray-400">
-          Episode {page}: {
-            page === 1 ? 'The Misplaced Idea' :
-            page === 2 ? 'The Forgotten Birthday Wish' :
-            page === 3 ? 'The Lost Letter' :
-            page === 4 ? 'The Clock That Skipped a Beat' :
-            page === 5 ? 'The Unsent Applause' :
-            'The Memory That Wasn’t Theirs'
-          }
-        </h2>
+    <div className="bg-gradient-to-b from-gray-900 to-gray-800 min-h-screen text-white p-4 md:p-8 font-serif">
+      <div className="max-w-5xl mx-auto space-y-10">
+        <h1 className="text-3xl md:text-4xl font-bold tracking-wide text-center">The Archive of Forgotten Things</h1>
+        <h2 className="text-lg md:text-xl italic text-gray-400 text-center">Episode {page}: {current.title}</h2>
 
-        {page === 1 && (
-          <>
-            <img src="/images/page1.jpg" alt="Comic Panel - The Misplaced Idea" className="rounded-2xl shadow-lg border border-gray-700 mx-auto" style={{ maxWidth: '600px', width: '100%', height: 'auto' }} />
-            <div className="space-y-6 text-lg leading-relaxed">
-              <p><em>It was born during a daydream,</em><br />stuffed inside a crayon.<br />A whisper that never got written,<br />a wonder no one chased.</p>
-              <p><em>So it wandered here—</em><br />into drawer 19,<br />beneath unpaid bills,<br />between a broken metaphor<br />and an apology never said.</p>
-              <p><em>I found it flickering.</em><br />Still warm.</p>
-              <p><strong>Lucky thing.</strong></p>
-            </div>
-          </>
-        )}
+        <div className="flex flex-col md:flex-row md:space-x-8 items-center justify-center">
+          <img
+            src={`/images/${current.img}`}
+            alt={`Comic Panel - ${current.title}`}
+            className="rounded-2xl shadow-lg border border-gray-700 max-w-md w-full mb-6 md:mb-0"
+          />
 
-        {page === 2 && (
-          <>
-            <img src="/images/page2.jpg" alt="Comic Panel - The Forgotten Birthday Wish" className="rounded-2xl shadow-lg border border-gray-700 mx-auto" style={{ maxWidth: '600px', width: '100%', height: 'auto' }} />
-            <div className="space-y-6 text-lg leading-relaxed">
-              <p><em>It rose on the breath of a candle,</em><br />fragile, glowing, full of hope.<br />A single wish—made in silence,<br />never spoken, never heard.</p>
-              <p><em>The party ended. The lights dimmed.</em><br />No one asked what it was.<br />So it floated here, into my archive,<br />heart-shaped and humming faintly.</p>
-              <p><em>I keep it company now.</em><br />It flickers when I pass.</p>
-              <p><strong>Still waiting to be wished for.</strong></p>
-            </div>
-          </>
-        )}
-
-        {page === 3 && (
-          <>
-            <img src="/images/page3.jpg" alt="Comic Panel - The Lost Letter" className="rounded-2xl shadow-lg border border-gray-700 mx-auto" style={{ maxWidth: '600px', width: '100%', height: 'auto' }} />
-            <div className="space-y-6 text-lg leading-relaxed">
-              <p><em>It was meant to be sent,</em><br />but never was.<br />Maybe the words felt too fragile.<br />Maybe the sender ran out of courage… or time.</p>
-              <p><em>So it waited.</em><br />In Drawer 42.<br />Next to a postcard from nowhere<br />and a blank return envelope.</p>
-              <p><em>I never opened it.</em><br />I just watched<br />as it leaked<br />everything it never said.</p>
-              <p><strong>Some letters write themselves, even when no one reads them.</strong></p>
-            </div>
-          </>
-        )}
-
-        {page === 4 && (
-          <>
-            <img src="/images/page4.jpg" alt="Comic Panel - The Clock That Skipped a Beat" className="rounded-2xl shadow-lg border border-gray-700 mx-auto" style={{ maxWidth: '600px', width: '100%', height: 'auto' }} />
-            <div className="space-y-6 text-lg leading-relaxed">
-              <p><em>This one… paused.</em><br />Not broken. Just… still.<br />One moment too heavy to move past.<br />One heartbeat that didn’t know what to do next.</p>
-              <p><em>It wasn’t grief.</em><br />It wasn’t joy.<br />It was something else—<br />a flicker between the two.</p>
-              <p><em>So the second hand froze.</em><br />And the moment stayed here.<br />In drawer zero.<br />Where time comes to hesitate.</p>
-              <p><strong>Even clocks sometimes need a breath.</strong></p>
-            </div>
-          </>
-        )}
-
-        {page === 5 && (
-          <>
-            <img src="/images/page5.jpg" alt="Comic Panel - The Unsent Applause" className="rounded-2xl shadow-lg border border-gray-700 mx-auto" style={{ maxWidth: '600px', width: '100%', height: 'auto' }} />
-            <div className="space-y-6 text-lg leading-relaxed">
-              <p><em>The lights were ready. The confetti waited.</em><br />But no one came.<br />No one clapped.<br />No one knew.</p>
-              <p><em>It wasn't a failure.</em><br />It was a performance held inside a whisper,<br />for an audience that never arrived.</p>
-              <p><em>So I kept the ticket.</em><br />And I filed the moment.</p>
-              <p><strong>Some ovations echo in silence.</strong></p>
-            </div>
-          </>
-        )}
-
-        {page === 6 && (
-          <>
-            <img src="/images/page6.jpg" alt="Comic Panel - The Memory That Wasn’t Theirs" className="rounded-2xl shadow-lg border border-gray-700 mx-auto" style={{ maxWidth: '600px', width: '100%', height: 'auto' }} />
-            <div className="space-y-6 text-lg leading-relaxed">
-              <p><em>Some memories don't belong to us—</em><br />but we carry them anyway.<br />A swing in motion. A scent. A glance.<br />Familiar. But not ours.</p>
-              <p><em>This one floated in.</em><br />Unclaimed. Untethered.<br />A whisper in someone else’s voice.</p>
-              <p><em>I filed it under Drawer 87.</em><br />With care. And without question.</p>
-              <p><strong>Some memories find new homes.</strong></p>
-            </div>
-          </>
-        )}
+          <div className="space-y-6 text-base md:text-lg leading-relaxed max-w-xl">
+            {current.text.map((line, idx) => (
+              <p key={idx}><em>{line}</em></p>
+            ))}
+          </div>
+        </div>
 
         <div className="flex justify-between pt-8">
-          <button onClick={() => setPage(page - 1)} disabled={page === 1} className="px-4 py-2 rounded bg-gray-700 disabled:opacity-50">
+          <button
+            onClick={() => setPage(page - 1)}
+            disabled={page === 1}
+            className="px-4 py-2 rounded bg-gray-700 disabled:opacity-50"
+          >
             ← Back
           </button>
-          <button onClick={() => setPage(page + 1)} disabled={page === 6} className="px-4 py-2 rounded bg-gray-700 disabled:opacity-50">
+          <button
+            onClick={() => setPage(page + 1)}
+            disabled={page === episodes.length}
+            className="px-4 py-2 rounded bg-gray-700 disabled:opacity-50"
+          >
             Next →
           </button>
         </div>
