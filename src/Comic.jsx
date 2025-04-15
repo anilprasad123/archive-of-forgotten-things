@@ -1,9 +1,8 @@
-// Comic: The Archive of Forgotten Things – Layout FIXED with strict width control
-
+// Comic.jsx
 import { useState } from 'react';
 import './App.css';
 
-export default function App() {
+export default function Comic() {
   const [page, setPage] = useState(1);
 
   const episodes = [
@@ -77,16 +76,17 @@ export default function App() {
         <h1 className="text-3xl md:text-5xl font-bold tracking-wide text-center">The Archive of Forgotten Things</h1>
         <h2 className="text-lg md:text-2xl italic text-gray-400 text-center">Episode {page}: {current.title}</h2>
 
-        <div className="flex flex-col md:flex-row md:items-start md:space-x-12 mt-10">
-          <div className="w-full md:basis-5/12 flex justify-center md:justify-end">
+        {/* FIXED IMAGE + TEXT SECTION */}
+        <div className="flex flex-col md:flex-row items-start justify-center max-w-5xl mx-auto mt-10 gap-8">
+          <div className="w-full md:w-[400px] flex-shrink-0">
             <img
               src={`/images/${current.img}`}
               alt={`Comic Panel - ${current.title}`}
-              className="rounded-xl border border-gray-700 w-full max-w-[400px]"
+              className="w-full rounded-xl border border-gray-700"
             />
           </div>
 
-          <div className="w-full md:basis-7/12 pt-8 md:pt-0 text-[1.1rem] md:text-lg leading-relaxed space-y-6 text-center md:text-left">
+          <div className="w-full md:flex-1 text-[1.15rem] md:text-lg leading-relaxed space-y-6 text-center md:text-left px-2">
             {current.text.map((line, idx) => (
               <p key={idx}><em>{line}</em></p>
             ))}
@@ -113,4 +113,3 @@ export default function App() {
     </div>
   );
 }
-
